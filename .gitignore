@@ -1,0 +1,16 @@
+# Dependencies
+/node_modules
+/client/node_modules
+
+# Production
+/build
+/client/build
+
+# Secret environment variables
+.env
+/server/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
