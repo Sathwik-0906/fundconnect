@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-// Import both functions from the controller
-const { registerUser, loginUser } = require('../controllers/userController');
+const { registerUser, loginUser, getMe } = require('../controllers/userController');
+const { protect } = require('../middleware/authMiddleware'); // <-- IMPORT the middleware
 
-// Define the registration route
+// Public routes (anyone can access)
 router.post('/register', registerUser);
+router.post('/login', loginUser);
 
-// Define the login route
-router.post('/login', loginUser); // <-- ADD this new line
+// Private route (only logged-in users can access)
+router.get('/me', protect, getMe); // <-- ADD this new protected route
 
 module.exports = router;
